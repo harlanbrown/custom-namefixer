@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<component name="org.nuxeo.sample.custom-component">
+  <require>org.nuxeo.ecm.core.CoreExtensions</require>
+  <extension target="org.nuxeo.ecm.core.event.EventServiceComponent" point="listener">
+    <listener class="org.nuxeo.sample.CustomDuplicatedNameFixer" name="duplicatedNameFixer" priority="2000">
+      <event>aboutToImport</event>
+      <event>aboutToCreate</event>
+      <event>aboutToMove</event>
+    </listener>
+  </extension>
+</component>

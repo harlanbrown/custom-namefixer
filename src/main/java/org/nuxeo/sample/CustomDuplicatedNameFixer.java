@@ -7,6 +7,7 @@ import org.nuxeo.ecm.core.event.Event;
 import org.nuxeo.ecm.core.event.EventListener;
 import org.nuxeo.ecm.core.event.impl.DocumentEventContext;
 import org.nuxeo.ecm.core.api.DocumentExistsException;
+import org.nuxeo.runtime.transaction.TransactionHelper;
 
 /**
  * @author Stephane Lacoin at Nuxeo (aka matic)
@@ -22,6 +23,7 @@ public class CustomDuplicatedNameFixer implements EventListener {
             return;
         } else {
             log.info("nope");
+            TransactionHelper.setTransactionRollbackOnly();
             throw new DocumentExistsException("nope");
         } 
 
